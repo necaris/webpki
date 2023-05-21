@@ -559,7 +559,7 @@ fn is_valid_dns_id(
 
     if is_wildcard {
         // If the DNS ID ends with a dot, the last dot signifies an absolute ID.
-        let label_count = if label_length == 0 {
+        let _label_count = if label_length == 0 {
             dot_count
         } else {
             dot_count + 1
@@ -569,9 +569,11 @@ fn is_valid_dns_id(
         // TODO: Allow the TrustDomain to control this on a per-eTLD+1 basis,
         // similar to Chromium. Even then, it might be better to still enforce
         // that there are at least two labels after the wildcard.
-        if label_count < 3 {
-            return false;
-        }
+        // HACK(necaris): Comment this out for now, but we should actually fix
+        // the TODO here upstream.
+        // if label_count < 3 {
+        //     return false;
+        // }
     }
 
     true
