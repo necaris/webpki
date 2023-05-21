@@ -40,7 +40,7 @@ pub fn verify_cert_dns_name(
                         }
                         Some(false) => (),
                         None => {
-                            return NameIteration::Stop(Err(Error::BadDer));
+                            return NameIteration::Stop(Err(Error::CertNotValidForName));
                         }
                     }
                 }
